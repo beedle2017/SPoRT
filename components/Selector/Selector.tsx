@@ -6,6 +6,7 @@ import {
 	Platform,
 	PlatformColor,
 	Pressable,
+	ScrollView
 } from 'react-native';
 import { iosLabelColor, textStyles } from '../globalStyles/TextStyles';
 import Context from '../../util/store';
@@ -47,80 +48,82 @@ const Selector: React.FC<{ route: SelectorProps['route'] }> = ({ route }) => {
 			.length > 0;
 
 	return (
-		<View style={styles.wrappingViewStyle}>
-			<View style={styles.headingStyle}>
-				<Text
-					style={[textStyles.defaultTextStyle, textStyles.titleStyle]}
-				>
-					{dataType} Features
-				</Text>
-			</View>
-			<View style={styles.headingStyle}>
-				<Text
-					style={[
-						textStyles.defaultTextStyle,
-						textStyles.subTitleStyle,
-					]}
-				>
-					{selectedFeatures.length} out of {upperLimit} selected
-				</Text>
-			</View>
-			<View style={styles.selectContainerStyle}>
-				{featureData[dataType].features.map((feature) => (
-					<Pressable
-						key={feature.id}
-						style={styles.selectOptionContainerStyle}
-						onPress={() => handleSelectPress(feature.id)}
+		<ScrollView>
+			<View style={styles.wrappingViewStyle}>
+				<View style={styles.headingStyle}>
+					<Text
+						style={[textStyles.defaultTextStyle, textStyles.titleStyle]}
 					>
-						<View style={styles.selectIconContainerStyle}>
-							<View style={styles.iconTouchAreaStyle}>
-								<View
-									style={
-										isFeatureSelected(feature.id)
-											? [
-													styles.iconStyle,
-													styles.selectedIconStyle,
-											  ]
-											: styles.iconStyle
-									}
-								>
+						{dataType} Features
+					</Text>
+				</View>
+				<View style={styles.headingStyle}>
+					<Text
+						style={[
+							textStyles.defaultTextStyle,
+							textStyles.subTitleStyle,
+						]}
+					>
+						{selectedFeatures.length} out of {upperLimit} selected
+					</Text>
+				</View>
+				<View style={styles.selectContainerStyle}>
+					{featureData[dataType].features.map((feature) => (
+						<Pressable
+							key={feature.id}
+							style={styles.selectOptionContainerStyle}
+							onPress={() => handleSelectPress(feature.id)}
+						>
+							<View style={styles.selectIconContainerStyle}>
+								<View style={styles.iconTouchAreaStyle}>
 									<View
 										style={
 											isFeatureSelected(feature.id)
 												? [
-														styles.innerSelectedIconStyle,
-												  ]
-												: []
+														styles.iconStyle,
+														styles.selectedIconStyle,
+												]
+												: styles.iconStyle
 										}
-									/>
+									>
+										<View
+											style={
+												isFeatureSelected(feature.id)
+													? [
+															styles.innerSelectedIconStyle,
+													]
+													: []
+											}
+										/>
+									</View>
 								</View>
 							</View>
-						</View>
-						<View
-							style={
-								upperLimit === selectedFeatures.length &&
-								!isFeatureSelected(feature.id)
-									? [
-											styles.selectTextAreaContainerStyle,
-											styles.selectUnselectableTextAreaContainerStyle,
-									  ]
-									: styles.selectTextAreaContainerStyle
-							}
-						>
-							<Text
-								style={[textStyles.defaultTextStyle]}
-								numberOfLines={1}
+							<View
+								style={
+									upperLimit === selectedFeatures.length &&
+									!isFeatureSelected(feature.id)
+										? [
+												styles.selectTextAreaContainerStyle,
+												styles.selectUnselectableTextAreaContainerStyle,
+										]
+										: styles.selectTextAreaContainerStyle
+								}
 							>
-								{feature.value}
-							</Text>
-							<Text style={[textStyles.defaultSubTextStyle]}>
-								Score = {feature.score}
-							</Text>
-						</View>
-					</Pressable>
-				))}
+								<Text
+									style={[textStyles.defaultTextStyle]}
+									numberOfLines={1}
+								>
+									{feature.value}
+								</Text>
+								<Text style={[textStyles.defaultSubTextStyle]}>
+									Score = {feature.score}
+								</Text>
+							</View>
+						</Pressable>
+					))}
+				</View>
 			</View>
-		</View>
+		</ScrollView>
 	);
 };
 

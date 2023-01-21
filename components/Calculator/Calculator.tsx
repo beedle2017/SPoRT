@@ -7,10 +7,10 @@ import {
 	StyleSheet,
 	PlatformColor,
 	Platform,
-	Text
+	Text,
+	ScrollView
 } from 'react-native';
 import listItem, { CalculatorProps } from '../../util/types';
-import { ScrollView } from 'react-native-gesture-handler';
 import { getPrediction, getSportScore, getSurgeryProbability } from '../../util/services';
 import { iosLabelColor, textStyles } from '../globalStyles/TextStyles';
 
