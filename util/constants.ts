@@ -127,7 +127,7 @@ const featureData: constantInfo = {
 export default featureData;
 
 export const aboutText: string = `
-Sheen Paajanen groin Recommended Treatment 'SPoRT' score for groin pain - this score was developed to help determine whether conservative measures or surgery is required for the management of groin pain attributable to inguinal disruption.
+Sheen Paajanen groin Recommended Treatment 'SPoRT' score for groin pain - this score was developed to help determine whether conservative measures or surgery is required for the management of groin pain attributable to inguinal disruption. The scoring system was developed by Professor Aali Sheen and Dr. Hannu Paajanen in an international collaborative effort.
 
 The SPoRT score has demonstrated excellent performance with an accuracy of 89.54%, sensitivity of 90.9%, specificity of 89.2% and an AUROC of 0.9356.
 
